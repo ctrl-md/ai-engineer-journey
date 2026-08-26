@@ -21,4 +21,4 @@ Both verified to converge correctly: linear regression trained to an exact predi
 
 ## Status
 
-Complete. Reviewed with a 12-question quiz covering the whole phase.
+Complete.
