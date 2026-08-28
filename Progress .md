@@ -14,9 +14,9 @@ Check off each week as you complete it. Mirrors the week-by-week schedule in `ai
 - [x] Week 5 — Forward pass, backprop derivation
 - [x] Week 6 — Autograd engine from scratch
 - [x] Week 7 — MLP from scratch in NumPy
-- [ ] Week 8 — PyTorch fundamentals
-- [ ] Week 9 — Normalization & regularization
-- [ ] Week 10 — CNNs
+- [x] Week 8 — PyTorch fundamentals
+- [x] Week 9 — Normalization & regularization
+- [x] Week 10 — CNNs
 - [ ] Week 11 — RNNs/LSTMs/GRUs, GPU/systems basics
 - [ ] Week 12 — Deliverable: CNN on medical imaging dataset
 

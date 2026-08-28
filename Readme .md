@@ -32,6 +32,6 @@ Each phase has its own folder, with a subfolder per week. Deliverables — the r
 
 **Phase 1 complete** — math foundations (vectors, matrices, eigenvectors, probability through Bayes' theorem, calculus through gradient descent), plus linear regression and logistic regression built, trained, and evaluated from scratch. See `phase-1-foundations/`.
 
-**Phase 2, Weeks 5–7 complete** — forward pass and backpropagation by hand, a working autograd engine from scratch, and a batched multi-layer perceptron in NumPy. See `phase-2-deep-learning-core/`.
+**Phase 2, Weeks 5–10 complete** — forward pass and backpropagation by hand, a working autograd engine from scratch, a batched multi-layer perceptron in NumPy, PyTorch fundamentals, normalization/regularization techniques, and a CNN with a working ResNet-style residual block. See `phase-2-deep-learning-core/`.
 
-Currently on: Phase 2, Week 8 — PyTorch fundamentals.
+Currently on: Phase 2, Week 11 — RNNs/LSTMs/GRUs, GPU/systems basics.
