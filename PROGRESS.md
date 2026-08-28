@@ -25,8 +25,8 @@ Check off each week as you complete it. Mirrors the week-by-week schedule in `ai
 - [x] Week 13 — Attention from scratch
 - [x] Week 14 — Full transformer architecture
 - [x] Week 15 — GPT from scratch
-- [ ] Week 16 — Tokenization, pretraining objectives
-- [ ] Week 17 — ViT, other generative architectures; deliverable: trained GPT
+- [x] Week 16 — Tokenization, pretraining objectives
+- [x] Week 17 — ViT, other generative architectures; deliverable: trained GPT
 
 ## Phase 4 — Explainable AI
 

@@ -34,6 +34,6 @@ Each phase has its own folder, with a subfolder per week. Deliverables — the r
 
 **Phase 2 complete** — forward pass and backpropagation by hand, a working autograd engine from scratch, a batched multi-layer perceptron in NumPy, PyTorch fundamentals, normalization/regularization, CNNs with a working ResNet-style residual block, RNNs/LSTMs/GRUs and GPU/systems basics, and a full capstone project training a CNN on real medical imaging data (PneumoniaMNIST) with experiment tracking, checkpointing, and real debugging along the way. See `phase-2-deep-learning-core/`.
 
-**Phase 3, Weeks 13–15 complete** — attention built from scratch and verified against hand calculations, a full transformer block (multi-head attention, layer norm, feedforward, residuals), and a complete GPT trained from scratch on a toy corpus with causal masking rigorously verified. See `phase-3-transformers/`.
+**Phase 3 complete** — attention built from scratch and verified against hand calculations, a full transformer block, a complete GPT trained from scratch with causal masking rigorously verified, real BPE tokenization, MLM/CLM and encoder/decoder reasoning, vision transformers, a conceptual pass on VAEs/GANs/diffusion models, and the phase deliverable: dropout added, trained on a richer corpus, and genuine autoregressive text generation working end to end. See `phase-3-transformers/`.
 
-Currently on: Phase 3, Week 16 — tokenization (BPE/WordPiece/SentencePiece), pretraining objectives, encoder/decoder/encoder-decoder.
+Currently on: Phase 4 — Explainable AI (XAI).
