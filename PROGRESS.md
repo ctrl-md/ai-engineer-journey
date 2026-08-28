@@ -17,8 +17,8 @@ Check off each week as you complete it. Mirrors the week-by-week schedule in `ai
 - [x] Week 8 — PyTorch fundamentals
 - [x] Week 9 — Normalization & regularization
 - [x] Week 10 — CNNs
-- [ ] Week 11 — RNNs/LSTMs/GRUs, GPU/systems basics
-- [ ] Week 12 — Deliverable: CNN on medical imaging dataset
+- [x] Week 11 — RNNs/LSTMs/GRUs, GPU/systems basics
+- [x] Week 12 — Deliverable: CNN on medical imaging dataset
 
 ## Phase 3 — Transformers & Modern Architectures
 
