@@ -46,10 +46,10 @@ Check off each week as you complete it. Mirrors the week-by-week schedule in `ai
 
 ## Phase 6 — MLOps & Production Engineering
 
-- [ ] Week 28 — Experiment tracking, data pipelines
-- [ ] Week 29 — Model serving
-- [ ] Week 30 — Compression, software engineering practices for ML
-- [ ] Week 31 — Monitoring; deliverable: deployed API
+- [x] Week 28 — Experiment tracking, data pipelines
+- [x] Week 29 — Model serving
+- [x] Week 30 — Compression, software engineering practices for ML
+- [x] Week 31 — Monitoring; deliverable: deployed API
 
 ## Phase 7 — Research Skills
 
