@@ -30,10 +30,10 @@ Check off each week as you complete it. Mirrors the week-by-week schedule in `ai
 
 ## Phase 4 — Explainable AI
 
-- [ ] Week 18 — Feature attribution (SHAP, LIME)
-- [ ] Week 19 — Visual explanation (Grad-CAM, saliency)
-- [ ] Week 20 — Calibration & uncertainty, adversarial robustness
-- [ ] Week 21 — Fairness auditing; deliverable: interpretation report
+- [x] Week 18 — Feature attribution (SHAP, LIME)
+- [x] Week 19 — Visual explanation (Grad-CAM, saliency)
+- [x] Week 20 — Calibration & uncertainty, adversarial robustness
+- [x] Week 21 — Fairness auditing; deliverable: interpretation report
 
 ## Phase 5 — Applied Generative AI & NLP
 

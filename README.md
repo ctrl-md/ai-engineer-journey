@@ -36,4 +36,6 @@ Each phase has its own folder, with a subfolder per week. Deliverables — the r
 
 **Phase 3 complete** — attention built from scratch and verified against hand calculations, a full transformer block, a complete GPT trained from scratch with causal masking rigorously verified, real BPE tokenization, MLM/CLM and encoder/decoder reasoning, vision transformers, a conceptual pass on VAEs/GANs/diffusion models, and the phase deliverable: dropout added, trained on a richer corpus, and genuine autoregressive text generation working end to end. See `phase-3-transformers/`.
 
-Currently on: Phase 4 — Explainable AI (XAI).
+**Phase 4 complete** — Integrated Gradients built from scratch and verified, Grad-CAM worked by hand and coded, calibration and MC Dropout for uncertainty, counterfactuals and adversarial robustness reasoned through, fairness auditing (including the demographic-parity-vs-equalized-odds tension), and the phase deliverable: real XAI applied to the actual trained CNN and GPT, with a written interpretation report. See `phase-4-xai/`.
+
+Currently on: Phase 5 — Applied Generative AI & NLP, starting with pretraining vs. fine-tuning vs. RLHF/DPO.

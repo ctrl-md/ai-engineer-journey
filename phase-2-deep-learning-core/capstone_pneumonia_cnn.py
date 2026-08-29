@@ -55,9 +55,19 @@ class ResidualBlock(nn.Module):
 
 
 class CNN(nn.Module):
-    def __init__(self, in_channels, hidden_channels, kernel_size, padding, dropout_rate, num_classes):
+    def __init__(
+        self,
+        in_channels,
+        hidden_channels,
+        kernel_size,
+        padding,
+        dropout_rate,
+        num_classes,
+    ):
         super().__init__()
-        self.conv_in = nn.Conv2d(in_channels, hidden_channels, kernel_size, padding=padding)
+        self.conv_in = nn.Conv2d(
+            in_channels, hidden_channels, kernel_size, padding=padding
+        )
         self.norm = nn.BatchNorm2d(hidden_channels)
         self.resBlock = ResidualBlock(hidden_channels, kernel_size, padding)
         self.globalPool = nn.AdaptiveAvgPool2d(1)
@@ -83,9 +93,9 @@ def dataset_to_tensors(dataset):
 
 
 def fetch_dataset():
-    train_dataset = PneumoniaMNIST(split='train', download=True)
-    val_dataset = PneumoniaMNIST(split='val', download=True)
-    test_dataset = PneumoniaMNIST(split='test', download=True)
+    train_dataset = PneumoniaMNIST(split="train", download=True)
+    val_dataset = PneumoniaMNIST(split="val", download=True)
+    test_dataset = PneumoniaMNIST(split="test", download=True)
 
     x_train, y_train = dataset_to_tensors(train_dataset)
     x_val, y_val = dataset_to_tensors(val_dataset)
@@ -94,12 +104,32 @@ def fetch_dataset():
     return x_train, y_train, x_val, y_val, x_test, y_test
 
 
-def train(x_train, y_train, x_val, y_val, batch_size, in_channels, hidden_channels, kernel_size,
-          padding, dropout_rate, num_classes, learning_rate, weight_decay, step_size, gamma, epochs):
+def train(
+    x_train,
+    y_train,
+    x_val,
+    y_val,
+    batch_size,
+    in_channels,
+    hidden_channels,
+    kernel_size,
+    padding,
+    dropout_rate,
+    num_classes,
+    learning_rate,
+    weight_decay,
+    step_size,
+    gamma,
+    epochs,
+):
     dataset = PatientDataset(x_train, y_train)
     loader = DataLoader(dataset, batch_size, shuffle=True)
-    cnn = CNN(in_channels, hidden_channels, kernel_size, padding, dropout_rate, num_classes)
-    optimizer = optim.Adam(cnn.parameters(), lr=learning_rate, weight_decay=weight_decay)
+    cnn = CNN(
+        in_channels, hidden_channels, kernel_size, padding, dropout_rate, num_classes
+    )
+    optimizer = optim.Adam(
+        cnn.parameters(), lr=learning_rate, weight_decay=weight_decay
+    )
     scheduler = optim.lr_scheduler.StepLR(optimizer, step_size, gamma)
     loss = nn.CrossEntropyLoss()
     performance = []
@@ -108,6 +138,8 @@ def train(x_train, y_train, x_val, y_val, batch_size, in_channels, hidden_channe
 
     for epoch in range(epochs):
         cnn.train()
+        accuracy_list = []
+
         for batch_x, batch_y in loader:
             optimizer.zero_grad()
             y_pred = cnn(batch_x)
@@ -120,15 +152,25 @@ def train(x_train, y_train, x_val, y_val, batch_size, in_channels, hidden_channe
             pred_val = cnn(x_val)
             val_acc = (pred_val.argmax(dim=1) == y_val).float().mean().item()
             val_loss = loss(pred_val, y_val)
+            accuracy_list.append(val_acc)
 
-        performance.append({"train_loss": loss_fn.item(), "val_loss": val_loss.item(),
-                             "val_accuracy": val_acc, "epoch_num": epoch + 1})
+        average_accuracy = statistics.mean(accuracy_list) * 100
+        performance.append(
+            {
+                "train_loss": loss_fn.item(),
+                "val_loss": val_loss.item(),
+                "val_accuracy": average_accuracy,
+                "epoch_num": epoch + 1,
+            }
+        )
         scheduler.step()
-        print(f"epoch {epoch+1}: train_loss={loss_fn.item():.4f}, "
-              f"val_loss={val_loss.item():.4f}, val_accuracy={val_acc*100:.2f}%")
+        print(
+            f"epoch {epoch+1}: train_loss={loss_fn.item():.4f}, "
+            f"val_loss={val_loss.item():.4f}, val_accuracy={average_accuracy:.2f}%"
+        )
 
-        if val_acc > best_val_acc:
-            best_val_acc = val_acc
+        if average_accuracy > best_val_acc:
+            best_val_acc = average_accuracy
             best_state = copy.deepcopy(cnn.state_dict())
 
     cnn.load_state_dict(best_state)
@@ -142,20 +184,19 @@ def evaluate(x_test, y_test, batch_size, cnn):
     loss = nn.CrossEntropyLoss()
     loss_list = []
     accuracy_list = []
-    performance = []
-    cnn.eval()
-
     with no_grad():
-        for batch_num, (batch_x, batch_y) in enumerate(loader):
+        cnn.eval()
+        for batch_x, batch_y in loader:
             y_pred = cnn(batch_x)
             loss_fn = loss(y_pred, batch_y)
             test_acc = (y_pred.argmax(dim=1) == batch_y).float().mean().item()
             loss_list.append(loss_fn.item())
             accuracy_list.append(test_acc)
 
-        performance.append({"test_loss": statistics.mean(loss_list),
-                             "test_accuracy": statistics.mean(accuracy_list),
-                             "batch_num": batch_num + 1})
+        performance = {
+            "test_loss": statistics.mean(loss_list),
+            "test_accuracy": statistics.mean(accuracy_list),
+        }
         print(f"Average test loss: {statistics.mean(loss_list):.4f}")
         print(f"Test accuracy: {statistics.mean(accuracy_list)*100:.2f}%")
 
@@ -165,9 +206,23 @@ def evaluate(x_test, y_test, batch_size, cnn):
 if __name__ == "__main__":
     x_train, y_train, x_val, y_val, x_test, y_test = fetch_dataset()
 
-    cnn, performance = train(x_train=x_train, y_train=y_train, x_val=x_val, y_val=y_val,
-                              batch_size=32, in_channels=1, hidden_channels=12, kernel_size=3,
-                              padding=1, dropout_rate=0.5, num_classes=2, learning_rate=0.001,
-                              weight_decay=0.01, step_size=10, gamma=0.5, epochs=20)
+    cnn, performance = train(
+        x_train=x_train,
+        y_train=y_train,
+        x_val=x_val,
+        y_val=y_val,
+        batch_size=32,
+        in_channels=1,
+        hidden_channels=12,
+        kernel_size=3,
+        padding=1,
+        dropout_rate=0.5,
+        num_classes=2,
+        learning_rate=0.001,
+        weight_decay=0.01,
+        step_size=10,
+        gamma=0.5,
+        epochs=20,
+    )
 
     test_performance = evaluate(x_test=x_test, y_test=y_test, batch_size=32, cnn=cnn)
