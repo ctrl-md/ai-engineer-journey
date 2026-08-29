@@ -35,7 +35,9 @@ class MLP(nn.Module):
         return self.layer2(x)
 
 
-def train(batch_size, in_features, hidden_size, out_features, x, y, learning_rate, epochs):
+def train(
+    batch_size, in_features, hidden_size, out_features, x, y, learning_rate, epochs
+):
     dataset = PatientDataset(x, y)
     loader = DataLoader(dataset, batch_size, shuffle=True)
     model = MLP(in_features, hidden_size, out_features)
@@ -58,8 +60,16 @@ if __name__ == "__main__":
     x = torch.randn(10, 2)
     y = torch.randn(10, 1)
 
-    trained = train(batch_size=2, in_features=2, hidden_size=4, out_features=1,
-                     x=x, y=y, learning_rate=0.01, epochs=200)
+    trained = train(
+        batch_size=2,
+        in_features=2,
+        hidden_size=4,
+        out_features=1,
+        x=x,
+        y=y,
+        learning_rate=0.01,
+        epochs=200,
+    )
 
     final_loss = nn.MSELoss()(trained(x), y)
     print(f"final loss: {final_loss.item():.4f}")

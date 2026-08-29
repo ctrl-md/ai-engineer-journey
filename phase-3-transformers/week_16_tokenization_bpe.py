@@ -47,7 +47,7 @@ def train_bpe(corpus, num_merges):
         pair_counts = get_pair_counts(corpus)
         if not pair_counts:
             break
-        best_pair = max(pair_counts, key=pair_counts.get)
+        best_pair = max(pair_counts, key=lambda pair: pair_counts[pair])
         merges.append(best_pair)
         corpus = merge_pair(best_pair, corpus)
         print(

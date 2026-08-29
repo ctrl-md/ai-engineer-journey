@@ -6,6 +6,8 @@ sublayer, and residual connections tying it all together -- the
 actual repeating unit real transformers stack many times over.
 """
 
+from typing import cast
+
 import torch.nn as nn
 import torch
 
@@ -16,7 +18,9 @@ class Transformer(nn.Module):
         self.norm1 = nn.LayerNorm(d_model)
         self.attention = nn.MultiheadAttention(d_model, num_heads, batch_first=True)
         self.norm2 = nn.LayerNorm(d_model)
-        self.feedforward = nn.Sequential(nn.Linear(d_model, d_ff), nn.ReLU(), nn.Linear(d_ff, d_model))
+        self.feedforward = nn.Sequential(
+            nn.Linear(d_model, d_ff), nn.ReLU(), nn.Linear(d_ff, d_model)
+        )
 
     def forward(self, x, attn_mask=None):
         normed = self.norm1(x)
@@ -37,5 +41,10 @@ if __name__ == "__main__":
 
     loss = out.sum()
     loss.backward()
-    print(f"attention grad non-zero: {model.attention.in_proj_weight.grad.abs().sum().item() > 0}")
-    print(f"feedforward grad non-zero: {model.feedforward[0].weight.grad.abs().sum().item() > 0}")
+    attention_grad = model.attention.in_proj_weight.grad
+    feedforward_in = cast(nn.Linear, model.feedforward[0])
+    feedforward_grad = feedforward_in.weight.grad
+    assert attention_grad is not None
+    assert feedforward_grad is not None
+    print(f"attention grad non-zero: {attention_grad.abs().sum().item() > 0}")
+    print(f"feedforward grad non-zero: {feedforward_grad.abs().sum().item() > 0}")

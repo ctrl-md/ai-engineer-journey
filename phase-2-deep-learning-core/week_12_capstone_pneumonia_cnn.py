@@ -18,26 +18,19 @@ Real debugging along the way (not just theoretical):
   checkpoint that got kept was epoch 20).
 """
 
+import os
+import sys
+
 import torch.nn as nn
 from torch import relu, no_grad, optim
-from torch.utils.data import Dataset, DataLoader
+from torch.utils.data import DataLoader
 from medmnist import PneumoniaMNIST
 import torch
 import statistics
 import copy
 
-
-class PatientDataset(Dataset):
-    def __init__(self, x, y):
-        super().__init__()
-        self.x = x
-        self.y = y
-
-    def __len__(self):
-        return len(self.x)
-
-    def __getitem__(self, index):
-        return self.x[index], self.y[index]
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+from week_08_pytorch_fundamentals import PatientDataset
 
 
 class ResidualBlock(nn.Module):
@@ -134,12 +127,11 @@ def train(
     loss = nn.CrossEntropyLoss()
     performance = []
     best_val_acc = 0
-    best_state = None
+    best_state = copy.deepcopy(cnn.state_dict())
+    loss_fn = torch.tensor(0.0)
 
     for epoch in range(epochs):
         cnn.train()
-        accuracy_list = []
-
         for batch_x, batch_y in loader:
             optimizer.zero_grad()
             y_pred = cnn(batch_x)
@@ -152,25 +144,23 @@ def train(
             pred_val = cnn(x_val)
             val_acc = (pred_val.argmax(dim=1) == y_val).float().mean().item()
             val_loss = loss(pred_val, y_val)
-            accuracy_list.append(val_acc)
 
-        average_accuracy = statistics.mean(accuracy_list) * 100
         performance.append(
             {
                 "train_loss": loss_fn.item(),
                 "val_loss": val_loss.item(),
-                "val_accuracy": average_accuracy,
+                "val_accuracy": val_acc,
                 "epoch_num": epoch + 1,
             }
         )
         scheduler.step()
         print(
             f"epoch {epoch+1}: train_loss={loss_fn.item():.4f}, "
-            f"val_loss={val_loss.item():.4f}, val_accuracy={average_accuracy:.2f}%"
+            f"val_loss={val_loss.item():.4f}, val_accuracy={val_acc*100:.2f}%"
         )
 
-        if average_accuracy > best_val_acc:
-            best_val_acc = average_accuracy
+        if val_acc > best_val_acc:
+            best_val_acc = val_acc
             best_state = copy.deepcopy(cnn.state_dict())
 
     cnn.load_state_dict(best_state)
@@ -184,19 +174,25 @@ def evaluate(x_test, y_test, batch_size, cnn):
     loss = nn.CrossEntropyLoss()
     loss_list = []
     accuracy_list = []
+    performance = []
+    cnn.eval()
+    batch_num = -1
+
     with no_grad():
-        cnn.eval()
-        for batch_x, batch_y in loader:
+        for batch_num, (batch_x, batch_y) in enumerate(loader):
             y_pred = cnn(batch_x)
             loss_fn = loss(y_pred, batch_y)
             test_acc = (y_pred.argmax(dim=1) == batch_y).float().mean().item()
             loss_list.append(loss_fn.item())
             accuracy_list.append(test_acc)
 
-        performance = {
-            "test_loss": statistics.mean(loss_list),
-            "test_accuracy": statistics.mean(accuracy_list),
-        }
+        performance.append(
+            {
+                "test_loss": statistics.mean(loss_list),
+                "test_accuracy": statistics.mean(accuracy_list),
+                "batch_num": batch_num + 1,
+            }
+        )
         print(f"Average test loss: {statistics.mean(loss_list):.4f}")
         print(f"Test accuracy: {statistics.mean(accuracy_list)*100:.2f}%")
 

@@ -4,23 +4,16 @@ A network combining batch normalization, dropout, weight decay, and
 a learning rate scheduler -- all five Week 9 techniques in one place.
 """
 
+import os
+import sys
+
 import torch
 import torch.nn as nn
 from torch import relu, optim
-from torch.utils.data import Dataset, DataLoader
+from torch.utils.data import DataLoader
 
-
-class PatientDataset(Dataset):
-    def __init__(self, x, y):
-        super().__init__()
-        self.x = x
-        self.y = y
-
-    def __len__(self):
-        return len(self.x)
-
-    def __getitem__(self, index):
-        return self.x[index], self.y[index]
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+from week_08_pytorch_fundamentals import PatientDataset
 
 
 class MLP(nn.Module):
@@ -39,13 +32,27 @@ class MLP(nn.Module):
         return self.layer2(x)
 
 
-def train(x, y, batch_size, in_features, hidden_size, out_features, dropout_rate,
-          learning_rate, weight_decay, gamma, step_size, epochs):
+def train(
+    x,
+    y,
+    batch_size,
+    in_features,
+    hidden_size,
+    out_features,
+    dropout_rate,
+    learning_rate,
+    weight_decay,
+    gamma,
+    step_size,
+    epochs,
+):
     dataset = PatientDataset(x, y)
     loader = DataLoader(dataset, batch_size, shuffle=True)
     model = MLP(in_features, hidden_size, out_features, dropout_rate)
     loss_fn = nn.MSELoss()
-    optimizer = optim.SGD(model.parameters(), lr=learning_rate, weight_decay=weight_decay)
+    optimizer = optim.SGD(
+        model.parameters(), lr=learning_rate, weight_decay=weight_decay
+    )
     scheduler = optim.lr_scheduler.StepLR(optimizer, step_size, gamma)
 
     for _ in range(epochs):
@@ -65,9 +72,20 @@ if __name__ == "__main__":
     x = torch.randn(20, 2)
     y = torch.randn(20, 1)
 
-    trained = train(x, y, batch_size=4, in_features=2, hidden_size=8, out_features=1,
-                     dropout_rate=0.5, learning_rate=0.1, weight_decay=0.001,
-                     gamma=0.5, step_size=10, epochs=30)
+    trained = train(
+        x,
+        y,
+        batch_size=4,
+        in_features=2,
+        hidden_size=8,
+        out_features=1,
+        dropout_rate=0.5,
+        learning_rate=0.1,
+        weight_decay=0.001,
+        gamma=0.5,
+        step_size=10,
+        epochs=30,
+    )
 
     trained.eval()
     with torch.no_grad():

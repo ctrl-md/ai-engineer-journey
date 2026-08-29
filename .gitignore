@@ -1,0 +1,82 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+
+# Virtual environments
+venv/
+.venv/
+env/
+ENV/
+.conda/
+
+# Distribution / packaging
+build/
+dist/
+*.egg-info/
+.eggs/
+
+# Jupyter / IPython
+.ipynb_checkpoints/
+profile_default/
+ipython_config.py
+
+# Testing / coverage / type checkers
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+.tox/
+
+# IDE / editor
+.vscode/
+.idea/
+*.swp
+*.swo
+.DS_Store
+
+# ML datasets, downloads & caches
+data/
+datasets/
+*.csv
+*.tsv
+*.parquet
+*.npy
+*.npz
+*.h5
+*.hdf5
+.cache/
+~/.medmnist/
+
+# Model checkpoints & weights
+checkpoints/
+*.pt
+*.pth
+*.ckpt
+*.onnx
+*.safetensors
+*.pkl
+
+# Training outputs
+runs/
+logs/
+*.log
+outputs/
+wandb/
+lightning_logs/
+tensorboard/
+
+# Generated figures / plots
+*.png
+*.jpg
+*.jpeg
+*.gif
+*.svg
+plots/
+figures/
+
+# Environment / secrets
+.env
+.env.*

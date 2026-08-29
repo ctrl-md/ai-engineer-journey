@@ -38,4 +38,6 @@ Each phase has its own folder, with a subfolder per week. Deliverables — the r
 
 **Phase 4 complete** — Integrated Gradients built from scratch and verified, Grad-CAM worked by hand and coded, calibration and MC Dropout for uncertainty, counterfactuals and adversarial robustness reasoned through, fairness auditing (including the demographic-parity-vs-equalized-odds tension), and the phase deliverable: real XAI applied to the actual trained CNN and GPT, with a written interpretation report. See `phase-4-xai/`.
 
-Currently on: Phase 5 — Applied Generative AI & NLP, starting with pretraining vs. fine-tuning vs. RLHF/DPO.
+**Phase 5 complete** — RLHF/DPO and RL foundations reasoned through, LoRA built from scratch and verified against real parameter-count math (1.6% of a full fine-tune at rank 8), RAG's full pipeline (embeddings, cosine similarity, retrieval evaluation reusing Phase 1's precision/recall), prompt engineering and agents, evaluating generative systems, and the phase deliverable: pretrain → LoRA fine-tune → hallucination consistency check, all built and verified end to end on a clinical Q&A task. See `phase-5-generative-ai/`.
+
+Currently on: Phase 6 — MLOps & Production Engineering.

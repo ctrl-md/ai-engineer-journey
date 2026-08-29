@@ -1,0 +1,7 @@
+{
+  "extraPaths": [
+    "./phase-2-deep-learning-core",
+    "./phase-3-transformers",
+    "./phase-4-xai"
+  ]
+}

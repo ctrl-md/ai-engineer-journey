@@ -9,10 +9,12 @@ full from-scratch build, per the curriculum's note that transformers
 import torch
 import torch.nn as nn
 
+
 def relu(z):
     if z <= 0:
         return 0
     return z
+
 
 def rnn_step(x_t, h_prev, w_x, w_h, b):
     """One step of a plain RNN's recurrence: h_t = activation(w_x*x_t + w_h*h_prev + b)"""

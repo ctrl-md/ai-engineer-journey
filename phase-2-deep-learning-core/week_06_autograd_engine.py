@@ -6,6 +6,7 @@ generic backward() pass, instead of hand-deriving a new backward function
 for every new network shape.
 """
 
+
 def build_topo(v, visited, topo):
     if v not in visited:
         visited.add(v)
@@ -13,10 +14,12 @@ def build_topo(v, visited, topo):
             build_topo(child, visited, topo)
         topo.append(v)
 
+
 def relu(v):
     if v <= 0:
         return 0
     return v
+
 
 def relu_derivative(v):
     if v <= 0:
@@ -24,8 +27,8 @@ def relu_derivative(v):
     return 1
 
 
-class Value():
-    def __init__(self, data, _children=()):
+class Value:
+    def __init__(self, data: float, _children=()):
         self.data = data
         self.grad = 0
         self._backward = lambda: None
@@ -33,24 +36,30 @@ class Value():
 
     def __add__(self, other):
         out = Value(self.data + other.data, (self, other))
+
         def _backward():
             self.grad += out.grad
             other.grad += out.grad
+
         out._backward = _backward
         return out
 
     def __mul__(self, other):
         out = Value(self.data * other.data, (self, other))
+
         def _backward():
             self.grad += other.data * out.grad
             other.grad += self.data * out.grad
+
         out._backward = _backward
         return out
 
     def __neg__(self):
         out = Value(-self.data, (self,))
+
         def _backward():
             self.grad += -1 * out.grad
+
         out._backward = _backward
         return out
 
@@ -59,8 +68,10 @@ class Value():
 
     def relu(self):
         out = Value(relu(self.data), (self,))
+
         def _backward():
             self.grad += relu_derivative(self.data) * out.grad
+
         out._backward = _backward
         return out
 
@@ -80,6 +91,8 @@ if __name__ == "__main__":
     y = Value(1)
     w1, b1, w2, b2 = Value(0.5), Value(1), Value(-1), Value(3)
     learning_rate = 0.01
+    z2 = Value(0)
+    loss = Value(0)
 
     for _ in range(2000):
         z1 = x * w1 + b1

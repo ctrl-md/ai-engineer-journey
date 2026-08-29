@@ -37,12 +37,12 @@ Check off each week as you complete it. Mirrors the week-by-week schedule in `ai
 
 ## Phase 5 — Applied Generative AI & NLP
 
-- [ ] Week 22 — RLHF/DPO foundations
-- [ ] Week 23 — LoRA/QLoRA, quantization
-- [ ] Week 24 — RAG
-- [ ] Week 25 — Prompt engineering, agents
-- [ ] Week 26 — Evaluating generative systems
-- [ ] Week 27 — Deliverable: clinical RAG tool + LoRA fine-tune
+- [x] Week 22 — RLHF/DPO foundations
+- [x] Week 23 — LoRA/QLoRA, quantization
+- [x] Week 24 — RAG
+- [x] Week 25 — Prompt engineering, agents
+- [x] Week 26 — Evaluating generative systems
+- [x] Week 27 — Deliverable: clinical RAG tool + LoRA fine-tune
 
 ## Phase 6 — MLOps & Production Engineering
 
