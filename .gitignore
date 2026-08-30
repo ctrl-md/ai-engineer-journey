@@ -80,3 +80,6 @@ figures/
 # Environment / secrets
 .env
 .env.*
+
+# Miscellaneous
+phase-7-research/physionet-data/

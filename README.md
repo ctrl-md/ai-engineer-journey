@@ -30,14 +30,6 @@ Each phase has its own folder, with a subfolder per week. Deliverables — the r
 
 ## Status
 
-**Phase 1 complete** — math foundations (vectors, matrices, eigenvectors, probability through Bayes' theorem, calculus through gradient descent), plus linear regression and logistic regression built, trained, and evaluated from scratch. See `phase-1-foundations/`.
+**Phases 1–7 complete (Weeks 1–34)** — math foundations through linear/logistic regression; a from-scratch autograd engine, NumPy MLP, and PyTorch fundamentals; CNNs and RNNs, capped by a CNN trained on a medical imaging dataset with checkpointing; attention and a GPT built and trained from scratch; explainability techniques (SHAP, LIME, Grad-CAM, calibration, fairness auditing) applied to earlier models; LoRA fine-tuning, RAG, and a clinical Q&A tool; a served, monitored API with drift detection; and a full paper reproduction — a 1D-CNN for ICU mortality prediction on the PhysioNet 2012 Challenge dataset, built end to end from raw files to a trained model, reaching 0.82 test AUC against the paper's 0.848. See each phase's folder for details.
 
-**Phase 2 complete** — forward pass and backpropagation by hand, a working autograd engine from scratch, a batched multi-layer perceptron in NumPy, PyTorch fundamentals, normalization/regularization, CNNs with a working ResNet-style residual block, RNNs/LSTMs/GRUs and GPU/systems basics, and a full capstone project training a CNN on real medical imaging data (PneumoniaMNIST) with experiment tracking, checkpointing, and real debugging along the way. See `phase-2-deep-learning-core/`.
-
-**Phase 3 complete** — attention built from scratch and verified against hand calculations, a full transformer block, a complete GPT trained from scratch with causal masking rigorously verified, real BPE tokenization, MLM/CLM and encoder/decoder reasoning, vision transformers, a conceptual pass on VAEs/GANs/diffusion models, and the phase deliverable: dropout added, trained on a richer corpus, and genuine autoregressive text generation working end to end. See `phase-3-transformers/`.
-
-**Phase 4 complete** — Integrated Gradients built from scratch and verified, Grad-CAM worked by hand and coded, calibration and MC Dropout for uncertainty, counterfactuals and adversarial robustness reasoned through, fairness auditing (including the demographic-parity-vs-equalized-odds tension), and the phase deliverable: real XAI applied to the actual trained CNN and GPT, with a written interpretation report. See `phase-4-xai/`.
-
-**Phase 5 complete** — RLHF/DPO and RL foundations reasoned through, LoRA built from scratch and verified against real parameter-count math (1.6% of a full fine-tune at rank 8), RAG's full pipeline (embeddings, cosine similarity, retrieval evaluation reusing Phase 1's precision/recall), prompt engineering and agents, evaluating generative systems, and the phase deliverable: pretrain → LoRA fine-tune → hallucination consistency check, all built and verified end to end on a clinical Q&A task. See `phase-5-generative-ai/`.
-
-Currently on: Phase 6 — MLOps & Production Engineering.
+Currently on: Phase 8 — Capstone: AI + Medicine.

@@ -53,8 +53,8 @@ Check off each week as you complete it. Mirrors the week-by-week schedule in `ai
 
 ## Phase 7 — Research Skills
 
-- [ ] Week 32 — Paper reading, pick paper
-- [ ] Weeks 33–34 — Deliverable: paper reproduction
+- [x] Week 32 — Paper reading, pick paper
+- [x] Weeks 33–34 — Deliverable: paper reproduction
 
 ## Phase 8 — Capstone: AI + Medicine
 

@@ -55,7 +55,7 @@ def train(
 ):
     w1, b1, w2, b2 = starting_w1, starting_b1, starting_w2, starting_b2
     for _ in range(epochs):
-        z1, h, z2, loss = forward(x, w1, b1, w2, b2, y)
+        z1, h, z2, _ = forward(x, w1, b1, w2, b2, y)
         grad_w1, grad_b1, grad_w2, grad_b2 = backward(y, z2, h, w2, z1, x)
         w1, b1, w2, b2 = update_weights(
             w1, grad_w1, b1, grad_b1, w2, grad_w2, b2, grad_b2, learning_rate
