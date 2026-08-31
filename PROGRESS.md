@@ -58,7 +58,9 @@ Check off each week as you complete it. Mirrors the week-by-week schedule in `ai
 
 ## Phase 8 — Capstone: AI + Medicine
 
-- [ ] Week 35 — Landscape survey (incl. federated learning & differential privacy), choose direction
-- [ ] Week 36 — Regulatory realities, model cards/datasheets, causal inference
-- [ ] Weeks 37–38 — Build capstone project
-- [ ] Week 39 — Deliverable: final writeup
+- [x] Week 35 — Landscape survey (incl. federated learning & differential privacy), choose direction
+- [x] Week 36 — Regulatory realities, model cards/datasheets, causal inference
+- [x] Weeks 37–38 — Build capstone project
+- [x] Week 39 — Deliverable: final writeup
+
+**Curriculum complete — 39/39 weeks, 8/8 phases.**
