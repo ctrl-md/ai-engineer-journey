@@ -4,7 +4,7 @@
 
 ## Why this direction
 
-The curriculum's stated goal from the start was AI + medicine. Given a choice between deepening the EHR/time-series work from Phase 7 or branching into clinical NLP, I picked NLP — partly for breadth, but mainly because it connects directly to real work: Transcribe, the medical transcription product I maintain at Intron, is squarely in this domain. A capstone that reproduces that kind of problem, end to end, is worth more than one built purely for the portfolio.
+The curriculum's stated goal from the start was AI + medicine. Given a choice between deepening the EHR/time-series work from Phase 7 or branching into clinical NLP, I picked NLP — partly for breadth, but mainly because it connects directly to real work: Transcribe, the medical transcription product, is squarely in this domain. A capstone that reproduces that kind of problem, end to end, is worth more than one built purely for the portfolio.
 
 ## The dataset
 
