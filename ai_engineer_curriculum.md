@@ -133,7 +133,7 @@ _Weeks 35–39_
 - **Federated learning & differential privacy**: how models get trained across multiple hospitals' data without the data ever leaving each institution, since patient data legally can't be centralized the way a normal dataset can. Differential privacy adds a mathematical guarantee limiting what a trained model can leak about any single patient. One of the most distinctly medicine-specific topics in this whole curriculum.
 - **Causal inference**: prediction and causal effect estimation are different problems — confounding, propensity score matching, causal graphs. "Did the treatment work" is usually the real clinical question, and it's a causal one, not a predictive one — likely the single most relevant addition here given your background
 - Regulatory and deployment realities: FDA Software as a Medical Device (SaMD) pathway basics, HIPAA, clinical validation study design, mandatory bias/fairness audits for clinical deployment, plus documentation practices increasingly expected alongside them — model cards (a model's intended use, limitations, performance across subgroups) and datasheets for datasets (provenance, collection process, known biases)
-- Build an end-to-end project combining several earlier phases — a model, an explainability layer, rigorous evaluation, and ideally a small deployment. Your work on Transcribe at Intron is a natural, non-toy starting point here.
+- Build an end-to-end project combining several earlier phases — a model, an explainability layer, rigorous evaluation, and ideally a small deployment.
 
 **Deliverable**: a portfolio-worthy project with a written report — the kind of artifact you'd actually show in an AI+medicine job interview or a grad school application.
 
